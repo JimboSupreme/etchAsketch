@@ -5,19 +5,16 @@ const resetButton = document.querySelector('input[type=button]');
 resetButton.addEventListener('click', buildGrid);
 
 function removeAllChildNodes(parent) {
-    console.log('erasing children');
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 
 function colorNode(node) {
-    console.log(this);
     this.classList.add('colored');
 }
 
 function buildGrid() {
-    console.log('building grid');
     let x = parseInt(gridSize.value);
     removeAllChildNodes(sketchBox);
     if (Number.isInteger(x) && x>0 && x<101) {
@@ -40,7 +37,6 @@ function buildGrid() {
         const cells = document.querySelectorAll('#sketch-box>div>div');
         cells.forEach(cell => cell.addEventListener('mouseover', colorNode));
     } else {
-        console.log('adding warning');
         let warning = document.createElement('p');
         warning.innerText = 'enter grid size from 1-100';
         sketchBox.appendChild(warning);
